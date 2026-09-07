@@ -449,12 +449,12 @@ static_assert(sizeof(MAP_sensor_config_s) == 140);
 // start of thermistor_conf_s
 struct thermistor_conf_s {
 	/**
-	 * units: {bitStringValue(pressureUnitsLabels, useMetricOnInterface)}
+	 * units: {bitStringValue(unitsLabels, useMetricOnInterface)}
 	 * offset 0
 	 */
 	float tempC_1;
 	/**
-	 * units: {bitStringValue(pressureUnitsLabels, useMetricOnInterface)}
+	 * units: {bitStringValue(unitsLabels, useMetricOnInterface)}
 	 * offset 4
 	 */
 	float tempC_2;
@@ -2989,7 +2989,7 @@ struct engine_configuration_s {
 	offset 848 bit 27 */
 	bool useAbsolutePressureForLagTime : 1 {};
 	/**
-	 * Ramp the idle target down from the entry threshold over N seconds when returning to idle. Helps prevent overshooting (below) the idle target while returning to idle from coasting.
+	 * When returning to idle from coasting, start the closed-loop RPM target elevated by the 'RPM upper limit' idle detection threshold, then ramp it down to the normal target over the 'Ramp target duration'. Helps prevent RPM from dipping below the idle target on return to idle.
 	offset 848 bit 28 */
 	bool idleReturnTargetRamp : 1 {};
 	/**
@@ -4430,102 +4430,100 @@ struct engine_configuration_s {
 	offset 1672 bit 0 */
 	bool stepperDcInvertedPins : 1 {};
 	/**
-	 * Allow OpenBLT on Primary CAN
-	offset 1672 bit 1 */
-	bool canOpenBLT : 1 {};
-	/**
-	 * Allow OpenBLT on Secondary CAN
-	offset 1672 bit 2 */
-	bool can2OpenBLT : 1 {};
-	/**
 	 * Select whether to configure injector flow in volumetric flow (default, cc/min) or mass flow (g/s).
-	offset 1672 bit 3 */
+	offset 1672 bit 1 */
 	bool injectorFlowAsMassFlow : 1 {};
 	/**
-	offset 1672 bit 4 */
-	bool boardUseCanTerminator : 1 {};
-	/**
-	offset 1672 bit 5 */
+	offset 1672 bit 2 */
 	bool kLineDoHondaSend : 1 {};
 	/**
 	 * ListenMode is about acknowledging CAN traffic on the protocol level. Different from canWriteEnabled
-	offset 1672 bit 6 */
+	offset 1672 bit 3 */
 	bool can1ListenMode : 1 {};
 	/**
-	offset 1672 bit 7 */
+	offset 1672 bit 4 */
 	bool can2ListenMode : 1 {};
 	/**
+	offset 1672 bit 5 */
+	bool unusedBit_660_5 : 1 {};
+	/**
+	offset 1672 bit 6 */
+	bool unusedBit_660_6 : 1 {};
+	/**
+	offset 1672 bit 7 */
+	bool unusedBit_660_7 : 1 {};
+	/**
 	offset 1672 bit 8 */
-	bool unusedBit_663_8 : 1 {};
+	bool unusedBit_660_8 : 1 {};
 	/**
 	offset 1672 bit 9 */
-	bool unusedBit_663_9 : 1 {};
+	bool unusedBit_660_9 : 1 {};
 	/**
 	offset 1672 bit 10 */
-	bool unusedBit_663_10 : 1 {};
+	bool unusedBit_660_10 : 1 {};
 	/**
 	offset 1672 bit 11 */
-	bool unusedBit_663_11 : 1 {};
+	bool unusedBit_660_11 : 1 {};
 	/**
 	offset 1672 bit 12 */
-	bool unusedBit_663_12 : 1 {};
+	bool unusedBit_660_12 : 1 {};
 	/**
 	offset 1672 bit 13 */
-	bool unusedBit_663_13 : 1 {};
+	bool unusedBit_660_13 : 1 {};
 	/**
 	offset 1672 bit 14 */
-	bool unusedBit_663_14 : 1 {};
+	bool unusedBit_660_14 : 1 {};
 	/**
 	offset 1672 bit 15 */
-	bool unusedBit_663_15 : 1 {};
+	bool unusedBit_660_15 : 1 {};
 	/**
 	offset 1672 bit 16 */
-	bool unusedBit_663_16 : 1 {};
+	bool unusedBit_660_16 : 1 {};
 	/**
 	offset 1672 bit 17 */
-	bool unusedBit_663_17 : 1 {};
+	bool unusedBit_660_17 : 1 {};
 	/**
 	offset 1672 bit 18 */
-	bool unusedBit_663_18 : 1 {};
+	bool unusedBit_660_18 : 1 {};
 	/**
 	offset 1672 bit 19 */
-	bool unusedBit_663_19 : 1 {};
+	bool unusedBit_660_19 : 1 {};
 	/**
 	offset 1672 bit 20 */
-	bool unusedBit_663_20 : 1 {};
+	bool unusedBit_660_20 : 1 {};
 	/**
 	offset 1672 bit 21 */
-	bool unusedBit_663_21 : 1 {};
+	bool unusedBit_660_21 : 1 {};
 	/**
 	offset 1672 bit 22 */
-	bool unusedBit_663_22 : 1 {};
+	bool unusedBit_660_22 : 1 {};
 	/**
 	offset 1672 bit 23 */
-	bool unusedBit_663_23 : 1 {};
+	bool unusedBit_660_23 : 1 {};
 	/**
 	offset 1672 bit 24 */
-	bool unusedBit_663_24 : 1 {};
+	bool unusedBit_660_24 : 1 {};
 	/**
 	offset 1672 bit 25 */
-	bool unusedBit_663_25 : 1 {};
+	bool unusedBit_660_25 : 1 {};
 	/**
 	offset 1672 bit 26 */
-	bool unusedBit_663_26 : 1 {};
+	bool unusedBit_660_26 : 1 {};
 	/**
 	offset 1672 bit 27 */
-	bool unusedBit_663_27 : 1 {};
+	bool unusedBit_660_27 : 1 {};
 	/**
 	offset 1672 bit 28 */
-	bool unusedBit_663_28 : 1 {};
+	bool unusedBit_660_28 : 1 {};
 	/**
 	offset 1672 bit 29 */
-	bool unusedBit_663_29 : 1 {};
+	bool unusedBit_660_29 : 1 {};
 	/**
 	offset 1672 bit 30 */
-	bool unusedBit_663_30 : 1 {};
+	bool unusedBit_660_30 : 1 {};
 	/**
 	offset 1672 bit 31 */
-	bool unusedBit_663_31 : 1 {};
+	bool unusedBit_660_31 : 1 {};
 	/**
 	 * Angle of tooth detection within engine phase cycle
 	 * units: angle
@@ -6110,8 +6108,9 @@ struct engine_configuration_s {
 	offset 3956 bit 1 */
 	bool vvlControlEnabled : 1 {};
 	/**
+	 * By default the idle solenoid is switched off whenever the engine is not turning, to be quieter and save power. Enable this to keep driving it to the position the idle controller asks for, which at zero RPM is the cranking curve for the current coolant temperature - for valves which need to rest somewhere other than de-energized. The valve is only driven for a minute after the engine stops turning, then switched off anyway to protect the coil and the battery.
 	offset 3956 bit 2 */
-	bool unusedBit_Fancy3 : 1 {};
+	bool keepIdleSolenoidWhenStopped : 1 {};
 	/**
 	offset 3956 bit 3 */
 	bool unusedBit_Fancy4 : 1 {};
@@ -6386,7 +6385,7 @@ struct engine_configuration_s {
 	 */
 	int8_t airmassToTimingValues[8] = {};
 	/**
-	 * idle return target ramp duration
+	 * Time for the idle RPM target to ramp down from the elevated return-to-idle value (normal target + 'RPM upper limit') to the normal target. Longer duration gives a gentler, slower settle to idle. Only used when 'Ramp target on return to idle' is enabled.
 	 * units: seconds
 	 * offset 4066
 	 */
@@ -6812,7 +6811,7 @@ struct blend_table_s_BLEND_PRECISION {
 	/**
 	 * offset 0
 	 */
-	scaled_channel<int16_t, 1, 1> table[BLEND_TABLE_COUNT][BLEND_TABLE_COUNT] = {};
+	scaled_channel<int16_t, 10, 1> table[BLEND_TABLE_COUNT][BLEND_TABLE_COUNT] = {};
 	/**
 	 * units: Load
 	 * offset 128
@@ -6854,7 +6853,7 @@ struct blend_table_s_TARGET_AFR_BLEND_PRECISION {
 	/**
 	 * offset 0
 	 */
-	scaled_channel<int16_t, 1, 1> table[BLEND_TABLE_COUNT][BLEND_TABLE_COUNT] = {};
+	scaled_channel<int16_t, 100, 1> table[BLEND_TABLE_COUNT][BLEND_TABLE_COUNT] = {};
 	/**
 	 * units: Load
 	 * offset 128
